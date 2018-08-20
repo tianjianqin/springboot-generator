@@ -1,0 +1,82 @@
+package ${package}.controller;
+
+import java.util.HashMap;
+import java.util.List;
+import com.ucmed.util.ResultBean;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+import ${package}.service.${className}Service;
+
+
+/**
+ * ${comments}
+ *
+ * @author ${author}
+ * @email ${email}
+ * @date ${datetime}
+ */
+@Api(tags = "【公共】【】")
+@RestController
+@RequestMapping("/${classname}")
+public class ${className}Controller {
+
+    private org.slf4j.Logger logger = LoggerFactory.getLogger(getClass());
+
+    @Autowired
+	private ${className}Service ${classname}Service;
+
+	/**
+	 * 列表
+	 */
+    @ApiOperation("【获取列表】")
+    @PostMapping(value="/list.htm")
+	public ResultBean<PageInfo<${className}>> list(
+            @ApiParam(value = "ID") @RequestParam(required = false) Integer id,
+            @ApiParam(value = "页码，默认0") @RequestParam(defaultValue = "1", required = false) Integer pageNo,
+            @ApiParam(value = "页长，默认10") @RequestParam(defaultValue = "10", required = false) Integer pageSize
+    ){
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("id",id);
+        map.put("pageNo",pageNo);
+        map.put("pageSize",pageSize);
+        PageHelper.startPage(pageNo, pageSize);
+        List<${className}> ${classname}List = ${classname}Service.queryList(map);
+        PageInfo<${className}> page = new PageInfo<>(${classname}List);
+        ResultBean<PageInfo<${className}>> resultBean = new ResultBean<>();
+        resultBean.setRetData(page);
+        return resultBean;
+
+	}
+
+
+	/**
+	 * 保存
+	 */
+    @ApiOperation("【保存信息】")
+    @PostMapping("/save.htm")
+    public ResultBean<Integer> save(@RequestBody ${className} ${classname}){
+        ResultBean<Integer> resultBean = new ResultBean<>();
+        Integer save = ${classname}Service.save(${classname});
+        resultBean.setRetData(save);
+        return resultBean;
+    }
+
+	/**
+	 * 修改
+	 */
+    @ApiOperation("【修改信息】")
+    @PostMapping("/update.htm")
+    public ResultBean<Integer> update(@RequestBody ${className} ${classname}){
+        ResultBean<Integer> resultBean = new ResultBean<>();
+        int update = ${classname}Service.update(${classname});
+        resultBean.setRetData(update);
+        return resultBean;
+    }
+
+	
+}

@@ -1,0 +1,15 @@
+package ${package}.dao;
+
+import ${package}.model.${className};
+import ${mainPath}.dao.BaseMapper;
+
+/**
+ * ${comments}
+ * 
+ * @author ${author}
+ * @email ${email}
+ * @date ${datetime}
+ */
+public interface ${className}Mapper extends BaseMapper<${className}> {
+	
+}

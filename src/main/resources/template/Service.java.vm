@@ -1,0 +1,58 @@
+package ${package}.service;
+
+import ${package}.model.${className};
+import ${package}.dao.${className}Mapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import java.util.List;
+import java.util.Map;
+
+/**
+ * ${comments}
+ * 
+ * @author ${author}
+ * @email ${email}
+ * @date ${datetime}
+ */
+@Service
+public interface ${className}Service {
+
+    @Autowired
+    private ${className}Mapper ${classname}Mapper;
+
+
+    @Override
+    public List<${className}> queryList(Map<String, Object> map){
+        return ${classname}Mapper.queryList(map);
+    }
+
+    @Override
+    public int queryTotal(Map<String, Object> map){
+        return ${classname}Mapper.queryTotal(map);
+    }
+
+    @Override
+    public void save(${className} ${classname}){
+			${classname}Mapper.save(${classname});
+    }
+
+    @Override
+    public void update(${className} ${classname}){
+			${classname}Mapper.update(${classname});
+    }
+
+
+	#*${className} queryObject(${pk.attrType} ${pk.attrname});
+
+	List<${className}> queryList(Map<String, Object> map);
+
+	int queryTotal(Map<String, Object> map);
+
+	void save(${className} ${classname});
+
+	void update(${className} ${classname});
+
+	void delete(${pk.attrType} ${pk.attrname});
+
+	void deleteBatch(${pk.attrType}[] ${pk.attrname}s);*#
+}
