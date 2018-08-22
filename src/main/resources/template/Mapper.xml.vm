@@ -17,6 +17,9 @@
             <if test="id !=null">
 				and ${pk.columnName} = #{id}
             </if>
+            <if test="unionId !=null">
+                and union_id = #{unionId}
+            </if>
 		</where>
 	</select>
 	

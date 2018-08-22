@@ -37,11 +37,13 @@ public class ${className}Controller {
     @PostMapping(value="/list.htm")
 	public ResultBean<PageInfo<${className}>> list(
             @ApiParam(value = "ID") @RequestParam(required = false) Integer id,
+            @ApiParam(value = "医联体ID") @RequestParam(required = false) Long unionId,
             @ApiParam(value = "页码，默认0") @RequestParam(defaultValue = "1", required = false) Integer pageNo,
             @ApiParam(value = "页长，默认10") @RequestParam(defaultValue = "10", required = false) Integer pageSize
     ){
         HashMap<String, Object> map = new HashMap<>();
         map.put("id",id);
+        map.put("unionId",unionId);
         map.put("pageNo",pageNo);
         map.put("pageSize",pageSize);
         PageHelper.startPage(pageNo, pageSize);
