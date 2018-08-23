@@ -15,30 +15,53 @@ import java.util.Map;
  * @date ${datetime}
  */
 @Service
-public interface ${className}Service {
+public class ${className}Service {
 
     @Autowired
     private ${className}Mapper ${classname}Mapper;
 
-
-    @Override
+    /**
+     * @Author tianjianqin
+     * @Description TODO 
+     * @Date  2018/8/23 10:16
+     * @Param [map]
+     * @return List<${className}>
+     **/
     public List<${className}> queryList(Map<String, Object> map){
         return ${classname}Mapper.queryList(map);
     }
-
-    @Override
+    
+    /**
+     * @Author tianjianqin
+     * @Description TODO 
+     * @Date  2018/8/23 10:16
+     * @Param [map]
+     * @return int
+     **/
     public int queryTotal(Map<String, Object> map){
         return ${classname}Mapper.queryTotal(map);
     }
 
-    @Override
-    public void save(${className} ${classname}){
-			${classname}Mapper.save(${classname});
+    /**
+     * @Author tianjianqin
+     * @Description TODO 
+     * @Date  2018/8/23 10:26
+     * @Param []
+     * @return int
+     **/
+    public int save(${className} ${classname}){
+        return ${classname}Mapper.save(${classname});
     }
 
-    @Override
-    public void update(${className} ${classname}){
-			${classname}Mapper.update(${classname});
+    /**
+     * @Author tianjianqin
+     * @Description TODO 
+     * @Date  2018/8/23 10:26
+     * @Param []
+     * @return int
+     **/
+    public int update(${className} ${classname}){
+        return ${classname}Mapper.update(${classname});
     }
 
 

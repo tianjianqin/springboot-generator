@@ -9,8 +9,7 @@
         <result property="${column.attrname}" column="${column.columnName}"/>
 #end
     </resultMap>
-
-
+	<!-- 查询列表|对象 -->
 	<select id="queryList" resultType="${package}.model.${className}">
 		select * from ${tableName}
 		<where>
@@ -26,7 +25,7 @@
  	<select id="queryTotal" resultType="int">
 		select count(*) from ${tableName} 
 	</select>
-	 
+    <!-- 保存对象信息 -->
 	<insert id="save" parameterType="${package}.model.${className}"#if($pk.extra == 'auto_increment') useGeneratedKeys="true" keyProperty="$pk.attrname"#end>
 		insert into ${tableName}
 		(
@@ -47,7 +46,7 @@
 #end
 		)
 	</insert>
-	 
+    <!-- 修改对象信息 -->
 	<update id="update" parameterType="${package}.model.${className}">
 		update ${tableName} 
 		<set>
